@@ -36,7 +36,7 @@ module.exports = {
       type: 'integer'
     },
     reg_id:{
-      type: 'integer'
+      type: 'string'
     }
   }
 };

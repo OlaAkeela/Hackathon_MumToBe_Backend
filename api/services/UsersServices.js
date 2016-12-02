@@ -17,24 +17,23 @@ module.exports = {
         return;
       }
 
-      query = "SELECT *\
-               FROM `users` \
-               WHERE `email`= ? AND `password` = ?";
-
       Users.find({email: params.email}, {password: params.password}).exec(function (err, records) {
 
         if (err) {
-          callback(!success, "Error")
+          callback(!success, "Error");
           return;
         }
         if (records.length == 0) {
-          callback(!success, "Not Registered")
+          callback(!success, "Not Registered");
+          return;
         } else {
           callback(success, "Welcome Back", records);
+          return;
         }
       });
     } catch (exception) {
       callback(!success, "Error");
+      return;
     }
   },
   sign_up: function (params, callback) {
@@ -45,29 +44,24 @@ module.exports = {
         params.password == null || params.password == '' ||
         params.username == null || params.username == ''
       ) {
-        callback(!success, {
-          message: "Invalid params"
-        });
+        callback(!success,"Invalid params");
         return;
       }
 
-      Users.find({email: params.email}).exec(function (err, records) {
+      Users.find({email: params.email}).exec(function (err, records){
         if (err) {
-          console.log(err)
-          callback(!success, err)
+          callback(!success, err);
           return;
         }
 
         if (records.length > 0) {
-          callback(!success, {
-            message: "This email is already registered"
-          })
+          callback(!success, "This email is already registered")
+          return;
         }
 
         Users.create(params).exec(function (err, user) {
           if (err) {
-            console.log(err)
-            callback(!success, err)
+            callback(!success, err);
             return;
           }
 
@@ -75,50 +69,7 @@ module.exports = {
           return;
         });
       });
-      /*
-       query = "SELECT `email`\
-       FROM `users`\
-       WHERE `email` = ? ";
-
-       Connection.query(
-       query,
-       [params.email],
-       function (success,data) {
-       if (err) {
-       callback(!success, err)
-       return;
-       }
-       if (data){
-       callback(!success, {
-       message: "This email is already registered"
-       })
-       } else{
-
-       if(params.language){
-
-       }
-
-       query = "INSERT into `users` ('email', 'password', 'username') \
-       VALUES (?, ?, ?); \
-       SELECT `id` \
-       FROM `users`\
-       WHERE `email` = ?";
-       var bind = [params.email, params.password];
-       Connection.query(
-       query,
-       bind,
-       function (err, data) {
-       if (err) {
-       callback(!success, err)
-       return;
-       }
-       callback(success, "Added Successfully",data[1]);
-       });
-       }
-       });
-       */
     } catch (exception) {
-      console.log(exception)
       callback(!success, exception);
       return;
     }
@@ -129,9 +80,7 @@ module.exports = {
       var success = true;
       if (params.image_data == null || params.image_data == ''
       ) {
-        callback(!success, {
-          message: "Invalid params"
-        });
+        callback(!success, "Invalid params");
         return;
       }
       var base64 = params.image_data;
@@ -152,21 +101,20 @@ module.exports = {
       var base64Data = base64.replace(/^data:image\/(png|jpeg);base64,/, "");
 
       var file_name = "/" + (new Date().getTime()) + ext;
-      var destination_images_folder = "D:" + file_name
-      //var destination_images_folder = "/var/www/html/hackathon/" + file_name
+      //var destination_images_folder = "D:" + file_name
+      var destination_images_folder = "/var/www/html/hackathon/" + file_name
 
       params.image_data = file_name;
 
       require("fs").writeFile(destination_images_folder, base64Data, 'base64', function(err){
         if(err){
-          callback(!success, {}, "Upload Failed !");
+          callback(!success, "Upload Failed !", {});
           return
         }
-        callback(success, {}, "Uploaded Successfully");
+        callback(success, "Uploaded Successfully", {image_url: destination_images_folder});
         return
       });
     } catch (exception) {
-      console.log(exception)
       callback(!success, exception);
       return;
     }
@@ -177,9 +125,7 @@ module.exports = {
       var success = true;
       if (params.user_id == null || params.user_id == ''
       ) {
-        callback(!success, {
-          message: "Invalid params"
-        });
+        callback(!success, "Invalid params");
         return;
       }
 
@@ -191,23 +137,58 @@ module.exports = {
         }
 
         if (records.length <= 0) {
-          callback(!success, {
-            message: "Wrong user id"
-          })
+          callback(!success, "Wrong user id")
+          return;
         }
-
-
+        
         Users.update({id: params.user_id}, params).exec(function afterwards(err, updated) {
           if (err) {
             callback(!success, err);
             return;
           }
-          callback(success,"Added Successfully", "")
-
+          callback(success,"Updated Successfully", "")
+          return;
         });
       })
     } catch (exception) {
       console.log(exception)
+      callback(!success, exception);
+      return;
+    }
+  },
+  set_user_reg_id: function (params, callback) {
+    try {
+
+      var success = true;
+      if (params.user_id == null || params.user_id == ''
+      ) {
+        callback(!success, "Invalid params");
+        return;
+      }
+
+      Users.find({id: params.user_id}).exec(function (err, records) {
+        if (err) {
+          console.log(err)
+          callback(!success, err)
+          return;
+        }
+
+        if (records.length <= 0) {
+          callback(!success, "Wrong user id")
+          return;
+        }
+        
+        Users.update({id: params.user_id}, params).exec(function afterwards(err, updated) {
+          if (err) {
+            callback(!success, err);
+            return;
+          }
+          callback(success,"Updated Successfully", {})
+          return;
+
+        });
+      })
+    } catch (exception) {
       callback(!success, exception);
       return;
     }
