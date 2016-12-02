@@ -44,6 +44,8 @@ module.exports = {
       return;
     }
   },
+
+
   get_user_posts: function (params, callback) {
     try {
 
@@ -88,4 +90,35 @@ module.exports = {
       return;
     }
   },
+
+
+  add_new_post: function (params, callback) {
+    try {
+
+      var success = true;
+
+      if (params.title == null || params.title == '' ||
+        params.user_id == null || params.user_id == '' ||
+        params.subtitle == null || params.subtitle == '' ||
+        params.category_id == null || params.category_id == '') {
+        console.log(params)
+        callback(!success, {
+          message: "Invalid params"
+        });
+        return;
+      }
+
+      Comments.create(params).exec(function (err, comment) {
+        if (err) {
+          callback(!success, err);
+          return;
+        }
+        callback(success, "Added Successfully", comment);
+        return;
+      });
+    } catch (exception) {
+      callback(!success, "Error");
+      return;
+    }
+  }
 };

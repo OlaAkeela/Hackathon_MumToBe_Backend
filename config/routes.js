@@ -65,6 +65,10 @@ module.exports.routes = {
     "controller":"PostsController",
     "action":"get_user_posts"
   },
+  "POST /add_new_post":{
+    "controller":"PostsController",
+    "action":"add_new_post"
+  },
 
   /***************************************************************************
   *                                                                          *

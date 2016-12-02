@@ -27,8 +27,10 @@ module.exports = {
     category_id:{
       columnName: 'id',
       model: 'Categories',
+    },
+    no_of_reports: {
+      type: "integer"
     }
-
   }
 };
 
