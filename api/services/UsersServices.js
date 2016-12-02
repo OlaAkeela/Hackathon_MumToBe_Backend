@@ -112,7 +112,7 @@ module.exports = {
           callback(!success, "Upload Failed !", {});
           return
         }
-        callback(success, "Uploaded Successfully", {image_url: destination_images_folder});
+        callback(success, "Uploaded Successfully", {image_url: public_url});
         return
       });
     } catch (exception) {
