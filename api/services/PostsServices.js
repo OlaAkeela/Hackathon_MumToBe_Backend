@@ -81,12 +81,12 @@ module.exports = {
           }
 
           if (data.length == 0) {
-            callback(success, {posts: {}})
+            callback(success, {comments: {}})
             return;
           }
 
           console.log(data)
-          callback(success, {posts: data})
+          callback(success, {comments: data})
           return;
         });
     } catch (exception) {

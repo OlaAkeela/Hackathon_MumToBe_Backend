@@ -65,15 +65,13 @@ module.exports.routes = {
     "controller":"PostsController",
     "action":"get_user_posts"
   },
-<<<<<<< HEAD
-  "GET /get_post_details":{
-    "controller":"PostsController",
-    "action":"get_post_details"
-=======
+  "GET /get_post_details": {
+    "controller": "PostsController",
+    "action": "get_post_details"
+  },
   "POST /add_new_post":{
     "controller":"PostsController",
     "action":"add_new_post"
->>>>>>> edd7cb22fcc322eb7b84c75a646cca91221ac08d
   },
 
   /***************************************************************************

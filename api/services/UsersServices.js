@@ -85,9 +85,9 @@ module.exports = {
       }
       var base64 = params.image_data;
       var ext;
-      if (base64.startsWith("data:image\/png;base64,")) {
+      if (base64.indexOf("data:image\/png;base64,")==0) {
         ext = ".png";
-      } else if (base64.startsWith("data:image\/jpeg;base64,")) {
+      } else if (base64.indexOf("data:image\/jpeg;base64,")==0) {
         ext = ".jpg";
       } else {
         var error_res = "Invalid params";
@@ -102,7 +102,8 @@ module.exports = {
 
       var file_name = "/" + (new Date().getTime()) + ext;
       //var destination_images_folder = "D:" + file_name
-      var destination_images_folder = "/var/www/html/hackathon" + file_name
+      var destination_images_folder = "/var/www/html/hackathon" + file_name;
+      var public_url = "45.55.80.106/hachathon" + file_name;
 
       params.image_data = file_name;
 
@@ -140,7 +141,7 @@ module.exports = {
           callback(!success, "Wrong user id")
           return;
         }
-        
+
         Users.update({id: params.user_id}, params).exec(function afterwards(err, updated) {
           if (err) {
             callback(!success, err);
@@ -177,7 +178,7 @@ module.exports = {
           callback(!success, "Wrong user id")
           return;
         }
-        
+
         Users.update({id: params.user_id}, params).exec(function afterwards(err, updated) {
           if (err) {
             callback(!success, err);
