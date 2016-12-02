@@ -1,16 +1,16 @@
 /**
- * WeeksController
+ * CategoriesController
  *
- * @description :: Server-side logic for managing Weeks
+ * @description :: Server-side logic for managing Categories
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 
 module.exports = {
-  get_all_weeks_info: function (req, res) {
-    var action = "get_all_weeks_info";
+  get_categories: function (req, res) {
+    var action = "get_categories";
     try {
       var params = req.query;
-      WeeksServices.get_all_weeks_info(
+      CategoriesServices.get_categories(
         params,
         function (success, data, message) {
           if (success) {
@@ -36,4 +36,5 @@ module.exports = {
     }
   }
 };
+
 

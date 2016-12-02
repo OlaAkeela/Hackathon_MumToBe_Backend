@@ -4,12 +4,13 @@
 
 module.exports = {
 
-  get_all_weeks_info: function (params, callback) {
+
+  get_categories: function (params, callback) {
     try {
 
       var success = true;
 
-      if (params.language_id == null || params.language_id == '') {
+      if (params.cat_language == null || params.cat_language == '') {
         callback(
           !success, {
             message: "Invalid params"
@@ -18,20 +19,20 @@ module.exports = {
       }
 
       query = "SELECT *\
-               FROM `weeks` \
-               WHERE `week_language`= ?";
+               FROM `categories` \
+               WHERE `cat_language`= ?";
 
-      Weeks.find({week_language: params.language_id}).exec(function (err, records) {
+      Categories.find({cat_language: params.cat_language}).exec(function (err, records) {
 
         if (err) {
           callback(!success, "Error")
           return;
         }
         if (records.length == 0) {
-          callback(!success, "There is no data for Weeks!")
+          callback(!success, "There is no categories yet!")
         } else {
           callback(success, {
-            "weeks": records
+            "categories": records
           }, "success");
         }
       });
@@ -39,6 +40,4 @@ module.exports = {
       callback(!success, "Error");
     }
   }
-
 };
-
