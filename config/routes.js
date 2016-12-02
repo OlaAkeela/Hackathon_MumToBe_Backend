@@ -76,8 +76,12 @@ module.exports.routes = {
     "controller":"WeeksController",
     "action":"get_all_weeks_info"
   },
-
-///////////////////////////////Weeks routes//////////////////
+///////////////////////////////Trainings routes//////////////////
+  "GET /get_all_trainings":{
+    "controller":"TrainingsController",
+    "action":"get_all_trainings"
+  },
+///////////////////////////////Categories routes//////////////////
   "GET /get_categories":{
     "controller":"CategoriesController",
     "action":"get_categories"

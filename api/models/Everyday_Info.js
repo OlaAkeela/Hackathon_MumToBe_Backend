@@ -1,5 +1,5 @@
 /**
- * Categories.js
+ * Everyday_Info.js
  *
  * @description :: TODO: You might write a short summary of how this model works and what it represents here.
  * @docs        :: http://sailsjs.org/documentation/concepts/models-and-orm/models
@@ -8,10 +8,16 @@
 module.exports = {
 
   attributes: {
-    name: {
+    id: {
+      type: 'integer'
+    },
+    text: {
       type: 'text'
     },
-    cat_language: {
+    no_of_views: {
+      type: 'integer'
+    },
+    info_language: {
       type: 'integer'
     }
   }

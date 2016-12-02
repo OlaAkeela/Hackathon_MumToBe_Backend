@@ -8,9 +8,6 @@
 module.exports = {
 
   attributes: {
-    id: {
-        type: 'integer'
-      },
     week_number: {
         type: 'integer'
       },
