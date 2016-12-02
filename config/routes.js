@@ -55,7 +55,7 @@ module.exports.routes = {
   "POST /set_user_reg_id":{
     "controller":"UsersController",
     "action":"set_user_reg_id"
-  }
+  },
 
   /***************************************************************************
   *                                                                          *
@@ -66,5 +66,15 @@ module.exports.routes = {
   * for configuration options and examples.                                  *
   *                                                                          *
   ***************************************************************************/
+///////////////////////////////Weeks routes//////////////////
+  "GET /get_all_weeks_info":{
+    "controller":"WeeksController",
+    "action":"get_all_weeks_info"
+  },
 
+///////////////////////////////Weeks routes//////////////////
+  "GET /get_categories":{
+    "controller":"CategoriesController",
+    "action":"get_categories"
+  }
 };
