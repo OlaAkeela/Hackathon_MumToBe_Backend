@@ -56,6 +56,11 @@ module.exports.routes = {
     "controller":"UsersController",
     "action":"set_user_reg_id"
   },
+  // --- Posts Routs
+  "POST /get_posts_list":{
+    "controller":"PostsController",
+    "action":"get_posts_list"
+  },
 
   /***************************************************************************
   *                                                                          *
