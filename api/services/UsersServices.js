@@ -103,7 +103,7 @@ module.exports = {
       var file_name = "/" + (new Date().getTime()) + ext;
       //var destination_images_folder = "D:" + file_name
       var destination_images_folder = "/var/www/html/hackathon" + file_name;
-      var public_url = "45.55.80.106/hachathon" + file_name;
+      var public_url = "45.55.80.106/hackathon" + file_name;
 
       params.image_data = file_name;
 
