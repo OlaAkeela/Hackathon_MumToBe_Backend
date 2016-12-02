@@ -46,6 +46,15 @@ module.exports.routes = {
   "POST /upload_img":{
     "controller":"UsersController",
     "action":"upload_img"
+  },
+  "POST /set_user_settings":{
+    "controller":"UsersController",
+    "action":"set_user_settings"
+  },
+
+  "POST /set_user_reg_id":{
+    "controller":"UsersController",
+    "action":"set_user_reg_id"
   }
 
   /***************************************************************************
