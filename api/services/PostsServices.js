@@ -14,19 +14,20 @@ module.exports = {
         return;
       }
 
-      var offset = params.count * params.step
+      var offset = parseInt(params.count * params.step)
 
       query = "SELECT *\
                FROM posts\
                WHERE category_id = ?\
                LIMIT ?, ?";
-
+console.log("222")
       var bind = [params.category_id, offset, params.count]
       Posts.query(
         query,
         bind,
         function(err, data){
           if (err){
+            console.log(err)
             callback(!success, "No Data");
             return;
           }
