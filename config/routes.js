@@ -34,6 +34,18 @@ module.exports.routes = {
 
   '/': {
     view: 'homepage'
+  },
+  "POST /sign_in":{
+    "controller":"UsersController",
+    "action":"sign_in"
+  },
+  "POST /sign_up":{
+    "controller":"UsersController",
+    "action":"sign_up"
+  },
+  "POST /upload_img":{
+    "controller":"UsersController",
+    "action":"upload_img"
   }
 
   /***************************************************************************
