@@ -81,6 +81,11 @@ module.exports.routes = {
     "controller":"TrainingsController",
     "action":"get_all_trainings"
   },
+///////////////////////////////Comments routes//////////////////
+  "POST /add_new_comment":{
+    "controller":"CommentsController",
+    "action":"add_new_comment"
+  },
 ///////////////////////////////Categories routes//////////////////
   "GET /get_categories":{
     "controller":"CategoriesController",

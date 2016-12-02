@@ -8,9 +8,6 @@
 module.exports = {
 
   attributes: {
-    id: {
-      type: 'integer'
-    },
     post_id: {
       type: 'integer'
     },
