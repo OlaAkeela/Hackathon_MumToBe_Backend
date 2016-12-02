@@ -34,6 +34,34 @@ module.exports = {
       })
     }
   },
+  get_post_details: function (req, res) {
+    var action = "get_post_details";
+    try {
+      var params = req.query;
+      PostsServices.get_post_details(
+        params,
+        function (success, data) {
+          if (success){
+            success = 1
+          }else{
+            success = 2
+          }
+          return res.json({
+            action: action,
+            success: success,
+            data: data
+          });
+        }
+      )
+
+    } catch (exception) {
+      return res.json({
+        action: action,
+        success: 2,
+        data: "No Data"
+      })
+    }
+  },
   get_user_posts: function (req, res) {
     var action = "get_user_posts";
     try {

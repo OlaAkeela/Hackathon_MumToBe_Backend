@@ -10,10 +10,7 @@ module.exports = {
       var success = true;
 
       if (params.language_id == null || params.language_id == '') {
-        callback(
-          !success, {
-            message: "Invalid params"
-          });
+        params.language_id = 2
         return;
       }
 
