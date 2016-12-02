@@ -61,6 +61,10 @@ module.exports.routes = {
     "controller":"PostsController",
     "action":"get_posts_list"
   },
+  "GET /get_user_posts":{
+    "controller":"PostsController",
+    "action":"get_user_posts"
+  },
 
   /***************************************************************************
   *                                                                          *
