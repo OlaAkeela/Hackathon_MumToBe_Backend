@@ -57,5 +57,9 @@ module.exports.routes = {
   * for configuration options and examples.                                  *
   *                                                                          *
   ***************************************************************************/
-
+///////////////////////////////Weeks routes//////////////////
+  "POST /get_all_weeks_info":{
+    "controller":"WeeksController",
+    "action":"get_all_weeks_info"
+  }
 };
