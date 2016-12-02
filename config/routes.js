@@ -46,7 +46,7 @@ module.exports.routes = {
   "POST /upload_img":{
     "controller":"UsersController",
     "action":"upload_img"
-  }
+  },
 
   /***************************************************************************
   *                                                                          *
