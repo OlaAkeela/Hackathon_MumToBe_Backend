@@ -20,8 +20,8 @@ module.exports = {
                FROM posts\
                WHERE category_id = ?\
                LIMIT ?, ?";
-console.log("222")
-      var bind = [params.category_id, offset, params.count]
+
+      var bind = [params.category_id, offset, parseInt(params.count)]
       Posts.query(
         query,
         bind,
@@ -33,7 +33,7 @@ console.log("222")
           }
 
           if(data.length == 0){
-            callback(success, {data:{}})
+            callback(success, {posts:{}})
             return;
           }
           callback(success, {posts: data })
