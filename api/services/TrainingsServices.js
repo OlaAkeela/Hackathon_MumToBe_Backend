@@ -24,6 +24,7 @@ module.exports = {
       Trainings.find({training_language: params.language_id}).exec(function (err, records) {
 
         if (err) {
+          console.log(err)
           callback(!success, "Error")
           return;
         }
@@ -36,6 +37,7 @@ module.exports = {
         }
       });
     } catch (exception) {
+      console.log(exception)
       callback(!success, "Error");
     }
   }
