@@ -57,7 +57,7 @@ module.exports.routes = {
     "action":"set_user_reg_id"
   },
   // --- Posts Routs
-  "POST /get_posts_list":{
+  "GET /get_posts_list":{
     "controller":"PostsController",
     "action":"get_posts_list"
   },

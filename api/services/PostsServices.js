@@ -5,31 +5,42 @@ module.exports = {
 
       var success = true;
 
-      if (params.email == null || params.email == '' ||
-        params.password == null || params.password == '') {
+      if (params.category_id == null || params.category_id == '' ||
+          params.count == null || params.count == '' ||
+          params.step == null || params.step == '') {
         callback(!success, {
           message: "Invalid params"
         });
         return;
       }
 
-      Users.find({email: params.email}, {password: params.password}).exec(function (err, records) {
+      var offset = params.count * params.step
 
-        if (err) {
-          callback(!success, "Error");
+      query = "SELECT *\
+               FROM posts\
+               WHERE category_id = ?\
+               LIMIT ?, ?";
+
+      var bind = [params.category_id, offset, params.count]
+      Posts.query(
+        query,
+        bind,
+        function(err, data){
+          if (err){
+            callback(!success, "No Data");
+            return;
+          }
+
+          if(data.length == 0){
+            callback(success, {data:{}})
+            return;
+          }
+          callback(success, {posts: data })
           return;
-        }
-        if (records.length == 0) {
-          callback(!success, "Not Registered");
-          return;
-        } else {
-          callback(success, "Welcome Back", records);
-          return;
-        }
-      });
+        });
     } catch (exception) {
       callback(!success, "Error");
       return;
     }
-  },
+  }
 };
