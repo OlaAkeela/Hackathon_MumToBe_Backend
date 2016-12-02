@@ -8,6 +8,9 @@
 module.exports = {
 
   attributes: {
+    id: {
+      type: 'integer'
+    },
     language: {
       type: 'text'
     }
