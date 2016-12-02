@@ -10,7 +10,7 @@ module.exports = {
   attributes: {
     user_id: {
       columnName: 'id',
-      model: 'Users'
+      model: 'Users',
     },
     title: {
       type: "string"
@@ -26,9 +26,11 @@ module.exports = {
     },
     category_id:{
       columnName: 'id',
-      model: 'Categories'
+      model: 'Categories',
+    },
+    no_of_reports: {
+      type: "integer"
     }
-
   }
 };
 

@@ -81,6 +81,33 @@ module.exports = {
           });
         }
       )
+    } catch (exception) {
+      return res.json({
+        action: action,
+        success: 2,
+        data: "No Data"
+      })
+    }
+  },
+  add_new_post: function (req, res) {
+    var action = "add_new_post";
+    try {
+      var params = req.body;
+      PostsServices.add_new_post(
+        params,
+        function (success, data) {
+          if (success){
+            success = 1
+          }else{
+            success = 2
+          }
+          return res.json({
+            action: action,
+            success: success,
+            data: data
+          });
+        }
+      )
 
     } catch (exception) {
       return res.json({
